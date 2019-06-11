@@ -1,6 +1,9 @@
 # myvuex
 
+![](https://i.loli.net/2019/06/11/5cff6eef76f2a85206.gif)
+
 ## Project setup
+
 ```
 yarn install
 ```
