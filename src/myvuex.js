@@ -16,6 +16,7 @@ class Store {
          * 所以需要用箭头函数，确保内部的this指向
          */
         this.actions = options.actions
+        this.handleGetters(options.getters)
         // this.name = '赵政委'
     }
     //一定要使用箭头函数 保证this 内外一致
@@ -32,6 +33,17 @@ class Store {
             commit: this.commit,
             state: this.state
         }, arg)
+    }
+    handleGetters(getters) {
+        this.getters = {}
+        Object.keys(getters).forEach(key => {
+            Object.defineProperty(this.getters, key, {
+                get: () => {
+                    return getters[key](this.state)
+                }
+            })
+
+        })
     }
 }
 
