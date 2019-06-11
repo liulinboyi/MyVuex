@@ -1,28 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>冲啊，手榴弹扔了{{$store.state.count}}个</div>
+    <button @click="add">扔一个</button>
+    <button @click="addAsync">蓄力扔俩</button>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "app",
+  created() {
+    console.log(this.$store);
+  },
+  methods: {
+    add() {
+      console.log('add')
+      this.$store.commit("increment");
+    },
+    addAsync() {
+      this.$store.dispatch("incrementAsync");
+    }
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
